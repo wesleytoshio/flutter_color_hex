@@ -3,9 +3,9 @@
 
 library fff.test.color_parser;
 
-import 'package:test/test.dart';
-import 'package:fff/parser.dart';
 import 'package:fff/color.dart';
+import 'package:fff/parser.dart';
+import 'package:test/test.dart';
 
 main() {
   test("ColorParser from HEX", () {
@@ -117,16 +117,17 @@ main() {
   });
 
   test("Arithmetics", () {
-    expect(Color(255) == ColorParser("#f00"), isTrue);
-    expect(Color(255, 255, 255) == ColorParser("rgb(255, 255, 255)"), isTrue);
+    expect(ColorHex(255) == ColorParser("#f00"), isTrue);
+    expect(
+        ColorHex(255, 255, 255) == ColorParser("rgb(255, 255, 255)"), isTrue);
 
-    expect(Color(255, 255, 255) == ColorParser("rgba(255, 255, 255, 1.0)"),
+    expect(ColorHex(255, 255, 255) == ColorParser("rgba(255, 255, 255, 1.0)"),
         isFalse);
-    expect(Color(255, 255, 255, 1.0) == ColorParser("#FFF"), isFalse);
+    expect(ColorHex(255, 255, 255, 1.0) == ColorParser("#FFF"), isFalse);
   });
 
   test("Restrictions", () {
-    expect(ColorParser(512), Color(255));
-    expect(ColorParser(-1024), Color(0));
+    expect(ColorParser(512), ColorHex(255));
+    expect(ColorParser(-1024), ColorHex(0));
   });
 }

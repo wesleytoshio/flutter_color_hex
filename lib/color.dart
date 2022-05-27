@@ -7,7 +7,7 @@ import 'utils.dart';
 
 enum Component { RED, GREEN, BLUE, ALPHA }
 
-class Color {
+class ColorHex {
   /// Return red component (0-255)
   final int red;
 
@@ -23,10 +23,10 @@ class Color {
   /// Constructor create [Color] from rgba components.
   /// Default value for [red], [green] and [blue] component is 0, for [alpha]- null
   /// For color with specified [alpha] component output format will be rgba.
-  const Color([this.red = 0, this.green = 0, this.blue = 0, this.alpha]);
+  const ColorHex([this.red = 0, this.green = 0, this.blue = 0, this.alpha]);
 
   bool operator ==(Object other) {
-    if (other is Color) {
+    if (other is ColorHex) {
       return red == other.red &&
           green == other.green &&
           blue == other.blue &&
@@ -35,8 +35,8 @@ class Color {
     return false;
   }
 
-  Color operator +(Color other) {
-    return Color(
+  ColorHex operator +(ColorHex other) {
+    return ColorHex(
         min(red + other.red, 255),
         min(green + other.green, 255),
         min(blue + other.blue, 255),
@@ -45,8 +45,8 @@ class Color {
             : min(alpha! + (other.alpha == null ? 1.0 : other.alpha!), 1.0));
   }
 
-  Color operator -(Color other) {
-    return Color(
+  ColorHex operator -(ColorHex other) {
+    return ColorHex(
         max(red - other.red, 0),
         max(green - other.green, 0),
         max(blue - other.blue, 0),

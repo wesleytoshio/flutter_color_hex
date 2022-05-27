@@ -168,7 +168,7 @@ _parseArgs(List args) {
 ///
 ///
 ///  expect(ColorParser([10, null, null, null]).toString(), "rgb(10, 0, 0)");
-Color ColorParser([dynamic? red, num? green, num? blue, num? alpha]) {
+ColorHex ColorParser([dynamic? red, num? green, num? blue, num? alpha]) {
   var args;
 
   if (red is String) {
@@ -196,5 +196,5 @@ Color ColorParser([dynamic? red, num? green, num? blue, num? alpha]) {
 
   args = _parseArgs(args);
 
-  return Color(args[0], args[1], args[2], args[3]);
+  return ColorHex(args[0], args[1], args[2], args[3]);
 }

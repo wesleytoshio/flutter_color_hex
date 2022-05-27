@@ -3,7 +3,7 @@ import 'package:fff/parser.dart';
 
 main() {
   // Create color object from hex-string
-  Color color = ColorParser('#afa43e');
+  ColorHex color = ColorParser('#ff2');
 
   // get color components
   print(color.red); // 175

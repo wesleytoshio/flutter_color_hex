@@ -3,57 +3,58 @@
 
 library fff.test.color;
 
-import 'package:test/test.dart';
 import 'package:fff/color.dart';
+import 'package:test/test.dart';
 
 main() {
   test("Constructor without arguments", () {
-    expect(Color().toString(), "rgb(0, 0, 0)");
+    expect(ColorHex().toString(), "rgb(0, 0, 0)");
   });
 
   test("Constructor with arguments", () {
-    expect(Color(255).toString(), "rgb(255, 0, 0)");
-    expect(Color(0, 255).toString(), "rgb(0, 255, 0)");
-    expect(Color(0, 0, 255).toString(), "rgb(0, 0, 255)");
-    expect(Color(0, 0, 0, .3).toString(), "rgba(0, 0, 0, 0.3)");
-    expect(Color(1, 2, 3, 0.4).toString(), "rgba(1, 2, 3, 0.4)");
+    expect(ColorHex(255).toString(), "rgb(255, 0, 0)");
+    expect(ColorHex(0, 255).toString(), "rgb(0, 255, 0)");
+    expect(ColorHex(0, 0, 255).toString(), "rgb(0, 0, 255)");
+    expect(ColorHex(0, 0, 0, .3).toString(), "rgba(0, 0, 0, 0.3)");
+    expect(ColorHex(1, 2, 3, 0.4).toString(), "rgba(1, 2, 3, 0.4)");
   });
 
   test("Output format", () {
-    expect(Color(255).toString(), "rgb(255, 0, 0)");
-    expect(Color(255).toRgbString(), "rgb(255, 0, 0)");
+    expect(ColorHex(255).toString(), "rgb(255, 0, 0)");
+    expect(ColorHex(255).toRgbString(), "rgb(255, 0, 0)");
 
-    expect(Color(255, 0, 0, 1.0).toString(), "rgba(255, 0, 0, 1.0)");
-    expect(Color(255, 0, 0, 1.0).toRgbaString(), "rgba(255, 0, 0, 1.0)");
+    expect(ColorHex(255, 0, 0, 1.0).toString(), "rgba(255, 0, 0, 1.0)");
+    expect(ColorHex(255, 0, 0, 1.0).toRgbaString(), "rgba(255, 0, 0, 1.0)");
 
-    expect(Color(255, 0, 0).toHexString(), "ff0000");
+    expect(ColorHex(255, 0, 0).toHexString(), "ff0000");
 
-    expect(Color(255, 255, 255).toString('red: %r, green: %g, blue: %B'),
+    expect(ColorHex(255, 255, 255).toString('red: %r, green: %g, blue: %B'),
         'red: 255, green: 255, blue: 255');
 
     expect(
-        Color(255, 255, 255, .5)
+        ColorHex(255, 255, 255, .5)
             .toString('red: %r, green: %g, blue: %B, alpha: %A'),
         'red: 255, green: 255, blue: 255, alpha: 0.5');
 
-    expect(Color(255, 255, 255, .5).toHexString('#%R%g%b'), '#FFffff');
+    expect(ColorHex(255, 255, 255, .5).toHexString('#%R%g%b'), '#FFffff');
 
     // === toList ===
 
     // simple
-    expect(Color(0, 0, 0).toList(), equals([0, 0, 0]));
-    expect(Color(255, 255, 255).toList(), equals([255, 255, 255]));
-    expect(Color(0, 0, 0, 0.0).toList(), equals([0, 0, 0, 0.0]));
-    expect(Color(255, 255, 255, 1.0).toList(), equals([255, 255, 255, 1.0]));
+    expect(ColorHex(0, 0, 0).toList(), equals([0, 0, 0]));
+    expect(ColorHex(255, 255, 255).toList(), equals([255, 255, 255]));
+    expect(ColorHex(0, 0, 0, 0.0).toList(), equals([0, 0, 0, 0.0]));
+    expect(ColorHex(255, 255, 255, 1.0).toList(), equals([255, 255, 255, 1.0]));
 
     // as double
-    expect(Color(10, 20, 30).toList(asDouble: true), equals([10.0, 20.0, 30.0]));
-    expect(Color(10, 20, 30, 0.4).toList(asDouble: true),
+    expect(ColorHex(10, 20, 30).toList(asDouble: true),
+        equals([10.0, 20.0, 30.0]));
+    expect(ColorHex(10, 20, 30, 0.4).toList(asDouble: true),
         equals([10.0, 20.0, 30.0, 0.4]));
 
     // template
     expect(
-        Color(10, 20, 30, 0.4).toList(template: [
+        ColorHex(10, 20, 30, 0.4).toList(template: [
           "A",
           Component.RED,
           "B",
@@ -65,22 +66,23 @@ main() {
         ]),
         equals(["A", 10.0, "B", 20.0, "C", 30.0, "D", 0.4]));
 
-    expect(Color(10, 20, 30).toList(template: ["A", "B", "C"]),
+    expect(ColorHex(10, 20, 30).toList(template: ["A", "B", "C"]),
         equals(["A", "B", "C"]));
 
     expect(
-        Color(10, 20, 30).toList(
+        ColorHex(10, 20, 30).toList(
             template: [Component.ALPHA, Component.ALPHA, Component.ALPHA]),
         equals([1.0, 1.0, 1.0]));
 
     expect(
-        Color(10, 20, 30)
+        ColorHex(10, 20, 30)
             .toList(template: [Component.BLUE, Component.BLUE, Component.BLUE]),
         equals([30, 30, 30]));
 
     // range
     expect(
-        Color(50, 255, 100, 0.4).toList(asDouble: false, range: 1, template: [
+        ColorHex(50, 255, 100, 0.4)
+            .toList(asDouble: false, range: 1, template: [
           Component.RED,
           Component.GREEN,
           Component.BLUE,
@@ -109,33 +111,33 @@ main() {
           0.4
         ]));
 
-    expect(Color(10, 20, 30).toList(rows: 3),
+    expect(ColorHex(10, 20, 30).toList(rows: 3),
         equals([10, 20, 30, 10, 20, 30, 10, 20, 30]));
 
     // === toMap ===
 
-    expect(Color(10, 20, 30).toMap(),
+    expect(ColorHex(10, 20, 30).toMap(),
         equals({"red": 10, "green": 20, "blue": 30}));
-    expect(Color(10, 20, 30, 0.0).toMap(),
+    expect(ColorHex(10, 20, 30, 0.0).toMap(),
         equals({"red": 10, "green": 20, "blue": 30, "alpha": 0.0}));
 
     // as double
-    expect(Color(10, 20, 30).toMap(asDouble: true),
+    expect(ColorHex(10, 20, 30).toMap(asDouble: true),
         equals({"red": 10.0, "green": 20.0, "blue": 30.0}));
-    expect(Color(10, 20, 30, 0.6).toMap(asDouble: true),
+    expect(ColorHex(10, 20, 30, 0.6).toMap(asDouble: true),
         equals({"red": 10.0, "green": 20.0, "blue": 30.0, "alpha": 0.6}));
 
     // template
     expect(
-        Color(10, 20, 30).toMap(template: {
+        ColorHex(10, 20, 30).toMap(template: {
           "a": Component.RED,
           "b": Component.GREEN,
           "c": Component.BLUE
         }),
         equals({"a": 10, "b": 20, "c": 30}));
-    expect(Color(10, 20, 30).toMap(template: {}), equals({}));
+    expect(ColorHex(10, 20, 30).toMap(template: {}), equals({}));
     expect(
-        Color(10, 20, 30).toMap(template: {
+        ColorHex(10, 20, 30).toMap(template: {
           "a": Component.RED,
           "A": Component.RED,
           "b": Component.GREEN,
@@ -149,7 +151,7 @@ main() {
 
     // range
     expect(
-        Color(50, 255, 100, 0.4).toMap(template: {
+        ColorHex(50, 255, 100, 0.4).toMap(template: {
           "a": Component.RED,
           "b": Component.GREEN,
           "c": Component.BLUE
@@ -158,7 +160,7 @@ main() {
   });
 
   test("Arithmetics", () {
-    expect(Color(255) + Color(0, 255), Color(255, 255));
-    expect(Color(255) - Color(100), Color(155, 0, 0));
+    expect(ColorHex(255) + ColorHex(0, 255), ColorHex(255, 255));
+    expect(ColorHex(255) - ColorHex(100), ColorHex(155, 0, 0));
   });
 }
