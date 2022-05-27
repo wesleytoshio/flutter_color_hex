@@ -1,4 +1,4 @@
-name: fff
+name: flutter_color_hex
 version: 2.0.0
 description:
   Dart package for convenient work with color. It will allow you to convert colors between rgb, rgba and hex formats.

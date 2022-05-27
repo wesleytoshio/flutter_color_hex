@@ -9,7 +9,7 @@ strings specified formats and from list of color components or map.
 ### A simple usage Color:
 
 ```dart
-import 'package:fff/color.dart';
+import 'package:flutter_color_hex/color.dart';
 
 main() {
 
@@ -33,7 +33,7 @@ main() {
 Output color components as List object
 
 ```dart
-import 'package:fff/color.dart';
+import 'package:flutter_color_hex/color.dart';
 
 main() {
 
@@ -72,7 +72,7 @@ main() {
 Output color components as Map object
 
 ```dart
-import 'package:fff/color.dart';
+import 'package:flutter_color_hex/color.dart';
 
 main() {
 
@@ -113,7 +113,7 @@ print(Color(100, 0, 0, .5) - Color(50, 0, 0, .3)); // rgba(50, 0, 0, 0.2)
 Presets library contains 275 constants of colors from [Material design](http://www.google.com/design/spec/style/color.html)
 
 ```dart
-import 'package:fff/presets.dart';
+import 'package:flutter_color_hex/presets.dart';
 
 main() {
     print(red + green); // rgb(255, 242, 134)
@@ -123,7 +123,7 @@ main() {
 ### Parse color
 
 ```dart
-import 'package:fff/parser.dart';
+import 'package:flutter_color_hex/parser.dart';
 
 main() {
 
@@ -146,7 +146,7 @@ main() {
 ### List convention
 
 ```dart
-import 'package:fff/parser.dart';
+import 'package:flutter_color_hex/parser.dart';
 
 main() {
 
@@ -170,7 +170,7 @@ main() {
 ### Map conventions
 
 ```dart
-import 'package:fff/parser.dart';
+import 'package:flutter_color_hex/parser.dart';
 
 main() {
 

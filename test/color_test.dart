@@ -3,7 +3,7 @@
 
 library fff.test.color;
 
-import 'package:fff/color.dart';
+import 'package:flutter_color_hex/color.dart';
 import 'package:test/test.dart';
 
 main() {

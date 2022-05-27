@@ -1,5 +1,5 @@
-import 'package:fff/color.dart';
-import 'package:fff/parser.dart';
+import 'package:flutter_color_hex/color.dart';
+import 'package:flutter_color_hex/parser.dart';
 
 main() {
   // Create color object from hex-string

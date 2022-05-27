@@ -3,8 +3,8 @@
 
 library fff.test.utils;
 
+import 'package:flutter_color_hex/utils.dart';
 import 'package:test/test.dart';
-import 'package:fff/utils.dart';
 
 main() {
   test("min", () {

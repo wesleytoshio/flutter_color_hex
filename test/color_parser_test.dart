@@ -3,8 +3,8 @@
 
 library fff.test.color_parser;
 
-import 'package:fff/color.dart';
-import 'package:fff/parser.dart';
+import 'package:flutter_color_hex/color.dart';
+import 'package:flutter_color_hex/parser.dart';
 import 'package:test/test.dart';
 
 main() {
